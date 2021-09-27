@@ -32,7 +32,7 @@
  		</span></li>
 	<li>${vo.name }</li>
 	<li>${vo.readCount }</li>
-	<li><fmt:formatDate value="${vo.datetime }" pattern="yyyy-MM-dd"/></li>
+	<li><fmt:formatDate value="${vo.wdate }" pattern="yyyy-MM-dd"/></li>
 </ul>
 </li>
  	</c:forEach>

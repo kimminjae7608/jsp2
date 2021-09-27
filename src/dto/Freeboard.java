@@ -16,7 +16,7 @@ public class Freeboard {
 	private String subject;
 	private String content;
 	private int readCount;
-	private Date datetime;
+	private Date wdate;
 	private String ip;
 	private short commentCount; 
 }
