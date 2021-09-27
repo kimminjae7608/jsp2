@@ -1,55 +1,47 @@
--- ÀÚÀ¯°Ô½ÃÆÇ : Å×ÀÌºí 2°³ (¸ŞÀÎ±ÛÀúÀå, ´ñ±ÛÀúÀå)
+-- ììœ ê²Œì‹œíŒ : í…Œì´ë¸” 2ê°œ (ë©”ì¸ê¸€ì €ì¥, ëŒ“ê¸€ì €ì¥)
 
 create table freeboard(
 	idx int not null auto_increment,
-	name varchar(30) not null,			-- ÀÛ¼ºÀÚ
-	password varchar(10) not null,		-- ±Ûºñ¹Ğ¹øÈ£(ÇÊ¿äÇÒ¶§¸¸ »ç¿ë)
-	subject varchar(40) not null,		-- ±ÛÁ¦¸ñ
-	content varchar(2000) not null,		-- ³»¿ë
-	readCount int default 0,			-- Á¶È¸¼ö
-	wdate datetime default current_timestamp, -- ¼­¹öÀÇ ÇöÀç³¯Â¥/½Ã°£
-	ip varchar(15) default '127.0.0.1',			-- Á¢¼ÓÀÚ ip
-	commentCount smallint default 0,			-- ´ñ±Û °¹¼ö
+	name varchar(30) not null,			-- ì‘ì„±ì
+	password varchar(10) not null,		-- ê¸€ë¹„ë°€ë²ˆí˜¸
+	subject varchar(40) not null,		-- ê¸€ì œëª©
+	content varchar(2000) not null,		-- ë‚´ìš©
+	readCount int default 0,			-- ì¡°íšŒìˆ˜
+	wdate datetime default current_timestamp, -- ì„œë²„ì˜ í˜„ì¬ë‚ ì§œ/ì‹œê°„
+	ip varchar(15) default '127.0.0.1',			-- ì ‘ì†ì ip
+	commemtCount smallint default 0,			-- ëŒ“ê¸€ ê°¯ìˆ˜
 	primary key(idx)
 );
-drop table freeboard;
 
 insert into freeboard (name,password,subject,content,ip)
-values ('honey','1111','°Ô½ÃÆÇ ½ÃÀÛ','°Ô½ÃÆÇ Ã³À½ÀÔ´Ï´Ù.','192.168.17.3');
+values ('honey','1111','ê²Œì‹œíŒ ì‹œì‘','ê²Œì‹œíŒ ì²˜ìŒì…ë‹ˆë‹¤.','192.168.17.3');
 insert into freeboard (name,password,subject,content,ip)
-values ('»ç³ª','1111','°Ô½ÃÆÇ 2µî','°Ô½ÃÆÇ µÎ¹øÂ°ÀÎ°¡¿ä ¸Â½À´Ï´Ù.','192.168.12.1');
+values ('ì‚¬ë‚˜','1111','ê²Œì‹œíŒ 2ë“±','ê²Œì‹œíŒ ë‘ë²ˆì§¸ì¸ê°€ìš” ë§ìŠµë‹ˆë‹¤.','192.168.12.1');
 insert into freeboard (name,password,subject,content,ip)
-values ('¹ÎÀç','1111','³­ °ü¸®ÀÚÀÔ´Ï´Ù','°Ô½ÃÆÇ ÀÌ¿ëÇÏ½Ã´Â ¸ğµçºĞµé²² °¨»çÇÕ´Ï´Ù.','192.168.23.3');
+values ('ë¯¼ì¬','1111','ë‚œ ê´€ë¦¬ìì…ë‹ˆë‹¤','ê²Œì‹œíŒ ì´ìš©í•˜ì‹œëŠ” ëª¨ë“ ë¶„ë“¤ê»˜ ê°ì‚¬í•©ë‹ˆë‹¤.','192.168.23.3');
 insert into freeboard (name,password,subject,content,ip)
-values ('Ã¹¹øÀç','1111','°Ô½ÃÆÇ ³×¹øÂ°','°Ô½ÃÆÇ µî¾÷ºÎÅ¹µå¸³´Ï´Ù.','192.168.24.3');
+values ('ì²«ë²ˆì¬','1111','ê²Œì‹œíŒ ë„¤ë²ˆì§¸','ê²Œì‹œíŒ ë“±ì—…ë¶€íƒë“œë¦½ë‹ˆë‹¤.','192.168.24.3');
 insert into freeboard (name,password,subject,content,ip)
-values ('µÎ¹øÂ°','1111','5µî','¸Å´ÏÁ®ÇÒ·¡¿ä','192.168.25.3');
+values ('ë‘ë²ˆì§¸','1111','5ë“±','ë§¤ë‹ˆì ¸í• ë˜ìš”','192.168.25.3');
 insert into freeboard (name,password,subject,content,ip)
-values ('¼¼¹øÂ°','1111','°Ô½ÃÆÇ','¹İ°©½À´Ï´Ù.','192.168.26.3');
+values ('ì„¸ë²ˆì§¸','1111','ê²Œì‹œíŒ','ë°˜ê°‘ìŠµë‹ˆë‹¤.','192.168.26.3');
 
 select * from freeboard f ;
 
--- mysql ¿¡´Â limit Å°¿öµå : limit ¹øÈ£, °¹¼ö
--- mysql,oracle select °á°ú¿¡ ´ëÇØ °¢Çà¿¡ ¼ø¼­´ë·Î ¹øÈ£¸¦ ºÎ¿©ÇÏ´Â ÄÃ·³(idx¾Æ´Õ´Ï´Ù)ÀÌ ¸¸µé¾îÁı´Ï´Ù.
--- limit ÀÇ ¹øÈ£´Â row num ÀÔ´Ï´Ù.(mysql Àº 0ºÎÅÍ ½ÃÀÛ)
+-- mysql ì—ëŠ” limit í‚¤ì›Œë“œ : limit ë²ˆí˜¸, ê°¯ìˆ˜
+-- mysql,oracle select ê²°ê³¼ì— ëŒ€í•´ ê°í–‰ì— ìˆœì„œëŒ€ë¡œ ë²ˆí˜¸ë¥¼ ë¶€ì—¬í•˜ëŠ” ì»¬ëŸ¼(idxì•„ë‹™ë‹ˆë‹¤)ì´ ë§Œë“¤ì–´ì§‘ë‹ˆë‹¤.
+-- limit ì˜ ë²ˆí˜¸ëŠ” row num ì…ë‹ˆë‹¤.(mysql ì€ 0ë¶€í„° ì‹œì‘)
 select * from freeboard f order by idx desc;
-select * from freeboard f order by idx desc limit 0,15;	-- 1ÆäÀÌÁö ¸ñ·Ï
-select * from freeboard f order by idx desc limit 15,15; -- 2ÆäÀÌÁö ¸ñ·Ï
-select * from freeboard f order by idx desc limit 30,15; -- 3ÆäÀÌÁö ¸ñ·Ï
-select * from freeboard f order by idx desc limit 45,15; -- 4ÆäÀÌÁö ¸ñ·Ï
--- °è»ê½Ä : n=10ÆäÀÌÁö ±ÛÀº? (10-1)*15	-> (n-1)*15
+select * from freeboard f order by idx desc limit 0,15;	-- 1í˜ì´ì§€ ëª©ë¡
+select * from freeboard f order by idx desc limit 15,15; -- 2í˜ì´ì§€ ëª©ë¡
+select * from freeboard f order by idx desc limit 30,15; -- 3í˜ì´ì§€ ëª©ë¡
+select * from freeboard f order by idx desc limit 45,15; -- 4í˜ì´ì§€ ëª©ë¡
+-- ê³„ì‚°ì‹ : n=10í˜ì´ì§€ ê¸€ì€? (10-1)*15	-> (n-1)*15
 select * from freeboard f order by idx desc limit 135,15;
 commit;
 
-alter table freeboard modify column wdate timestamp
-default current_timestamp; -- timezone¿¡ µû¶ó ¼³Á¤
+-- ê¸€ ìˆ˜ì • : subject, content ìˆ˜ì •
+update freeboard set subject='123', content ='ë‚´ìš©ìˆ˜ì •' where idx =157;
 
--- ±Û ¼öÁ¤ : subject, content ¼öÁ¤
-update freeboard set subject='123', content ='³»¿ë¼öÁ¤' where idx =157;
-
--- Á¶È¸¼ö º¯°æ : ÀĞÀ» ¶§¸¶´Ù(url ¿äÃ» ¹ß»ı) Ä«¿îÆ® +1
+-- ì¡°íšŒìˆ˜ ë³€ê²½ : ì½ì„ ë•Œë§ˆë‹¤(url ìš”ì²­ ë°œìƒ) ì¹´ìš´íŠ¸ +1
 update freeboard set readCount = readCount+1 where idx=157;
-
--- ±Û »èÁ¦ : ±Û ºñ¹Ğ¹øÈ£ 1)ÀÖÀ» ¶§ 2)¾øÀ» ¶§
-delete from freeboard where idx=155 and password = '1111';
-delete from freeboard where idx=156;
