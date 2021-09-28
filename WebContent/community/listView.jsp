@@ -27,7 +27,7 @@
 <li>
 <ul  class="row">
 	<li>${vo.idx }</li>
-	<li><a href="detailAction.jsp?idx=${vo.idx}&pno=1" class="title">${vo.subject }</a>
+	<li><a href="detailAction.jsp?idx=${vo.idx}&page=1" class="title">${vo.subject }</a>
  		...<span style="color:orange;font-size: 80%;">(${vo.commentCount })
  		</span></li>
 	<li>${vo.name }</li>
@@ -38,17 +38,16 @@
  	</c:forEach>
 </ul>
 <div style="margin:auto;">
- 	Go!<a class="button" href="insert.jsp">글쓰기</a>
- 	<a class="button" href="${pageContext.request.contextPath }">홈</a>작성글 총 개수 : 
-</div>
+ 	Go!<a class="button" href="insertView.jsp">글쓰기</a>
+ 	<a class="button" href="${pageContext.request.contextPath }">홈 : ${pageContext.request.contextPath }
+ 	</a>&nbsp;&nbsp;&nbsp;작성글 총 개수 : 
+</div> <!-- request.contextPath : request.getContextPath 메소드 실행 결과와 동일.
+			listAction.jsp 에서 pageContext객체를 사용하여 listView.jsp로 요청이 전달되었기 때문에
+			pageContext request로 합니다. 
+			
+			pageContext 객체(jsp내장객체) : jsp 파일(jsp페이지) 1개와 대응되는 객체.
+			-->
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
 

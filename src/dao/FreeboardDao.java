@@ -25,8 +25,9 @@ public class FreeboardDao {
 		list = mapper.selectList("getList",map);
 		mapper.close();
 		return list;
+		
 	}
-	public Freeboard select(int idx) {
+	public Freeboard getOne(int idx) {
 		Freeboard dto = null;
 		SqlSession mapper = sqlFactory.openSession();
 		dto = mapper.selectOne("selectByIdx",idx);
@@ -39,6 +40,13 @@ public class FreeboardDao {
 		int cnt = mapper.selectOne("getCount");		
 		mapper.close();
 		return cnt;
+	}
+	
+	public void insert(Freeboard dto) {
+		SqlSession mapper = sqlFactory.openSession();
+		mapper.insert("insert", dto);
+		mapper.commit();
+		mapper.close();
 	}
 	
 }
