@@ -20,6 +20,13 @@
 		insert into freeboard (name,password,subject,content,ip)
 		values (#{name},#{password},#{subject},#{content},#{ip})
 	</insert>
+	<update id="update" parameterType="dto.Freeboard">
+		update freeboard set subject=#{subject}, content =#{content} where idx =#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from freeboard where idx=#{idx};
+	</delete>
 
 
 </mapper>

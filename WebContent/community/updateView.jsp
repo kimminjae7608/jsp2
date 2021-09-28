@@ -10,19 +10,19 @@ function post_data() {
 	frm1.submit();
 }
 </script>
-<link rel="stylesheet" href="../css/temp.css">
+<link rel="stylesheet" href="../css/temp.css?v=3">
 </head>
 <body>
 <h3>동아리 커뮤니티 글 수정</h3>
 <hr>
-<form name="frm1" method="post" action="updateAction.jsp">
- 
+<form name="frm1" method="post" action="updateSave.jsp">
+ <input type="hidden" name="idx" value="${bean.idx}">
  <table>
  	<tr><th width="25%" class="td1">제목</th>
- 		<td><input type="text" name="subject" value="bean.subject" size="70" required="required"></td>
+ 		<td><input type="text" name="subject" value=${bean.subject } size="70" required></td>
  	</tr>
  	<tr><th>작성자</th>
- 		<td><input type="text" name="name" value="bean.name" size="70" disabled></td>
+ 		<td><input type="text" name="name" size="70" value="${bean.name }" disabled></td>
  	</tr>
  	
  	<tr><th>글 비밀번호</th>
@@ -32,9 +32,9 @@ function post_data() {
  		<td><textarea  rows="20" cols="80" name="content" required="required">${bean.content}</textarea></td>
  	</tr>
  	<tr><td colspan="2" align="center">
- 	<input type="submit" value="저장">
- 	<input type="reset"  value="다시쓰기">
- 	<input type="button" value="목록">
+ 	<input type="submit" value="저장" class="btn">
+ 	<input type="reset"  value="다시쓰기"class="btn">
+ 	<input type="button" value="목록" class="btn" onclick="location.href='listAction.jsp'">
  	</td></tr>
  </table>
  </form>

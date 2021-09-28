@@ -17,7 +17,7 @@ function post_data() {
 <h3>동아리 커뮤니티</h3>
 <hr>
 <form name="frm1" method="post" action="insertAction.jsp">
- <input type="hidden" name="ip" value="${request.remoteAddr }">
+<%--  <input type="hidden" name="ip" value="${request.remoteAddr }"> --%>
  <table>
  	<tr><th width="25%" >제목</th>
  		<td><input type="text" name="subject" required="required"></td>

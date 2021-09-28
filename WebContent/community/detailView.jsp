@@ -38,15 +38,19 @@
 			</li>
 			<li id="content">
 				<ul>
-					<li>내용</li>				
-					<li>${bean.content }</li>				
+					<li>내용</li>	
+					<!-- textarea에 입력한 엔터는 \n db에도 \n으로 저장됩니다.
+						브라우저 출력은 줄바꿈은 <br> 태그 해결1) pre 태그, 해결2) \n을 <br>로 대체-->			
+					<li>
+						<pre>${bean.content}</pre>
+					</li>				
 				</ul>
 			</li>
 		</ul>
 	<div style="text-align: center;margin-bottom: 10px;">
-		<a class="button">수정</a>
-		<a class="button">삭제</a>
-		<a class="button">목록</a>
+		<a class="button" href ="updateAction.jsp?idx=${bean.idx }">수정</a>
+		<a class="button" href ="deleteAcion.jsp?idx=${bean.idx }">삭제</a>
+		<a class="button" href="listAction.jsp">목록</a>
 	</div>
 	<!-- 메인글 출력 끝 -->
 	<!-- 댓글 시작 -->
