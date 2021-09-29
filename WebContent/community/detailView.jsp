@@ -49,17 +49,18 @@
 		</ul>
 	<div style="text-align: center;margin-bottom: 10px;">
 		<a class="button" href ="updateAction.jsp?idx=${bean.idx }">수정</a>
-		<a class="button" href ="deleteAcion.jsp?idx=${bean.idx }">삭제</a>
+		<a class="button" onclick ="deleteSet()">삭제</a>
 		<a class="button" href="listAction.jsp">목록</a>
 	</div>
 	<!-- 메인글 출력 끝 -->
 	<!-- 댓글 시작 -->
 	<form action="commentAction.jsp" method="post" name="frmCmt">
+	<input type="hidden" name ="mref" value="${bean.idx }">	
 		<hr class="line">
 		<div>
 			<span>댓글</span>
 			<span>${bean.commentCount }</span>
-			<span>3열</span>
+			<span></span>
 		</div>
 		<hr class="line">
 		<ul id="main">
@@ -84,9 +85,89 @@
 					</li>
 				</ul>
 			</li>
+			
+			<c:forEach var ="cmt" items="${cmtlist}">
+			<li> 
+				<ul>
+					<li>${cmt.name }</li>
+					<li>${cmt.ip }</li>
+					<li>${cmt.wdate }</li>
+					<!-- 댓글삭제 : 글비밀번호 확인X, 댓글idx, 메인글 idx -->
+					<li><a href="javascript:deleteCmt('${cmt.idx }','${bean.idx }')">삭제</a></li>
+				</ul>
+			</li>
+			<li>
+				<pre>${cmt.content }</pre>
+			</li> 
+			</c:forEach>
+			
 		</ul>
 	</form>
 </div>
+<!-- 처음에는 display가 none 이고 안보입니다. -->
+<!-- modal : alert,confirm 그리고 추가적인 정보를 받을 때 사용자가 만드는 입력 상자...-->
+   <div id="myModal" class="modal">
+      <!-- Modal content : 모달 입력창-->
+      <div class="modal-content">
+         <span class="close">&times;</span><br>
+         <div style="padding: 0px 20px;">
+            <b>글비밀번호</b><br>
+            <br>
+            <form action="deleteAction.jsp" method="post" name="frmPassword"
+            	onsubmit="return deleteOk()">
+              <input type="hidden" name="idx" value="${bean.idx }">
+              <input type="password" name="password" size="10">
+              <input type="submit" value="확인" style="padding: 5px 20px;">
+           	  <br>
+              <span style="color:red;font-size:0.8em;" id="err"></span>
+            </form>
+         </div>
+      </div>
+   </div>
+   <!-- 모달 끝 -->
+   
+   
+   <script type="text/javascript">
+		var modal = document.getElementById('myModal');
+	   	var span = document.getElementsByClassName("close")[0];
+	
+	   	span.onclick = function() {	//span 요소의 onclick 속성값에 해당하는 함수를 설정합니다.
+	   	modal.style.display = "none";   //modal 화면에 안보이기   닫기 기능 구현
+	   	}
+   
+	   	function deleteOk(){
+		   const yn = confirm('글을 삭제하시겠습니까?');
+		   if(yn){
+			   //비밀번호 입력되었는지 확인.
+			   if(document.frmPassword.password.value==""){
+				   document.getElementById('err').innerHTML = "비밀번호를 입력하세요.";
+				   return false;
+			   } else{
+					return true;	   
+		   		}
+		  	 }
+		  	 else{
+				  modal.style.display = "none";
+			   return false;
+		   }
+	   }
+	   
+		function deleteSet(){
+   			
+   			document.getElementById('myModal').style.display='block';
+   		}
+		
+		function deleteCmt(cmtidx,idx){
+			console.log(cmtidx); console.log(idx);
+			const yn = confirm('댓글 삭제하시겠습니까?');
+			if(yn){
+				location.href='commentAction.jsp?del=&cmtidx='+cmtidx+'&idx='+idx;
+			}else {
+				alert('댓글 삭제 취소합니다.');
+			}
+		}
+   </script>
+   
 </body>
 </html>
 
