@@ -33,7 +33,7 @@
 	<li>${vo.name }</li>
 	<li>${vo.readCount }</li>
 	<li><fmt:formatDate value="${vo.wdate }" pattern="yyyy-MM-dd" var="wdate"/></li>
-	<!-- ㅇ오늘 작성한 글은 시간으로 표시 -->
+	<!-- 오늘 작성한 글은 시간으로 표시 -->
 	<c:if test='${wdate == today }'>
 		<fmt:formatDate value="${vo.wdate }" type="time"/>
 	</c:if>

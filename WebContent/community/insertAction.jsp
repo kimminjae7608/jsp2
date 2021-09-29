@@ -16,7 +16,7 @@
 	dto.setSubject(subject);
 	dto.setPassword(password);
 	dto.setContent(content);
-	out.print(dto);	//테스트용
+	//out.print(dto);	//테스트용
 	FreeboardDao dao = FreeboardDao.getInstance();
 	dao.insert(dto);
 	response.sendRedirect("listAction.jsp");
