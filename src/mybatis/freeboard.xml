@@ -31,6 +31,13 @@
 	<select id="passwordCheck" resultType="dto.Freeboard" parameterType="java.util.Map">
 		select * from freeboard where idx=#{idx} and password =#{password};
 	</select>
+	
+	
+	<!-- 나중에 customer.xml 로 옮기세요 -->
+	<select id="loginCheck" parameterType="java.util.Map" resultType="dto.Customer">
+		select * from customer c  where email = #{email}
+		and password =#{password}
+	</select>
 
 </mapper>
 <!-- ${ } : 표현식. 중관호안에 수식에 대한 결과값을 구해서 출력 
