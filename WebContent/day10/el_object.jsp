@@ -8,16 +8,17 @@
 </head>
 <body>
 	<h3>EL 내장(implicit)객체</h3>
-		<% pageContext.setAttribute("data1", 23); %>
-		<% //pageContext.setAttribute("data", 23); %>
-		<% request.setAttribute("data2", "hi~~"); %>
-		<% //request.setAttribute("data", "hi~~"); %>
-		<% session.setAttribute("data3", "hi jsp"); %>
-		<% //session.setAttribute("data", "hi jsp"); 
-			//session에 저장된 애트리뷰트는 세션 time out 전까지 또는 세션 종료되기전까지 남아있습니다.%>
+		<% pageContext.setAttribute("data1", 23); 
+		//pageContext.setAttribute("data", 23); %>
+		<% request.setAttribute("data2", "hi~~"); 
+		//request.setAttribute("data", "hi~~"); %>
+		<% session.setAttribute("data3", "hi jsp"); 
+		//session.setAttribute("data", "hi jsp"); 
+		//session에 저장된 애트리뷰트는 세션 time out 전까지 또는 세션 종료되기전까지 남아있습니다.%>
 		
-		<% application.setAttribute("data4", "hello java"); %>
-		<% application.setAttribute("data", "hello java"); %>
+		<% application.setAttribute("data4", "hello java");  //톰캣서버가 종료되거나, 애플리케이션이 서버에서 종료되면
+			application.setAttribute("data", "hello java"); //그 때 application 객체가 소멸됩니다.
+		%>
 	<dl>
 		<dt>pageScope</dt>
 		<dd>pageContext에 저장된 객체(애트리뷰트) 참조 : ${pageScope.data1 }</dd>

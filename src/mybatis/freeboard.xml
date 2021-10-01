@@ -32,9 +32,14 @@
 		select * from freeboard where idx=#{idx} and password =#{password};
 	</select>
 	
+	<!-- 조회수 증가 -->
+	<update id="readCount" parameterType="int">
+		update freeboard set readCount = readCount +1 where idx=#{idx}
+	</update>
+	
 	
 	<!-- 나중에 customer.xml 로 옮기세요 -->
-	<select id="loginCheck" parameterType="java.util.Map" resultType="dto.Customer">
+	<select id="loginCheck" parameterType="java.util.Map" resultType="dto.SessionDto">
 		select * from customer c  where email = #{email}
 		and password =#{password}
 	</select>
