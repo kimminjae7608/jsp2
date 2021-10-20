@@ -19,10 +19,10 @@
    <c:if test="${sessionScope.user == null }">
       <a href="loginView.jsp">로그인</a>
    </c:if>
-      <c:if test="${sessionScope.user != null }">
+   <c:if test="${sessionScope.user != null }">
       <!-- 로그인된 상태 -->
       <br>${user.name }(${user.email }) 님 반갑습니다. <br>
       <a href="logout.jsp">로그아웃</a>
-      </c:if>
+   </c:if>
 </body>
 </html>

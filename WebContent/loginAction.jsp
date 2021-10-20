@@ -1,4 +1,5 @@
 <%@page import="dto.SessionDto"%>
+<%@page import="dto.SessionDto"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="dao.CustomerDao"%>

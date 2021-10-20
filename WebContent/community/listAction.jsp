@@ -31,5 +31,4 @@
 	pageContext.forward("listView.jsp");
 	//out.print(list);
 
-
 %>

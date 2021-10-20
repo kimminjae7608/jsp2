@@ -75,10 +75,6 @@
 </div>
 
 
-
-
-
-
 <!-- request.contextPath : request.getContextPath 메소드 실행 결과와 동일.
 			listAction.jsp 에서 pageContext객체를 사용하여 listView.jsp로 요청이 전달되었기 때문에
 			pageContext request로 합니다. 
